@@ -17,12 +17,12 @@ service:
 
 datasource:
   driver:
-    package: "drivers.sqlite_driver"
-    driver_class: "SQLiteDriver"
+    package: "drivers.postgres_driver"
+    driver_class: "PostgresDriver"
   database:
     connection_url: 'sqlite:///database.db'
     driver_name: 'postgresql+psycopg2'
-    name: 'hawker_flow_customer'
+    name: 'hawkerflow_cust_db'
     host: 'localhost'
     port: 5432
   options:

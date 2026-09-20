@@ -43,7 +43,7 @@ class DatabaseOptions(BaseSettings):
     password: SecretStr = Field(alias="postgres.password")
     echo: bool
 
-    model_config = SettingsConfigDict(secrets_dir=os.getenv('PROJECT_ROOT') or "vault")
+    model_config = SettingsConfigDict(secrets_dir=Path(os.getenv('PROJECT_ROOT') or ".") / "vault")
 
 
 class Datasource(BaseSettings):

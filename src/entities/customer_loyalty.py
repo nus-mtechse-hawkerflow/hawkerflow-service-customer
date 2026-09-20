@@ -6,7 +6,7 @@ from sqlmodel import SQLModel, Field, Column, DateTime, text, Relationship
 class CustomerLoyalty(SQLModel, table=True):
     __tablename__ = "customer_loyalty"
 
-    f_customer_id: str = Field(
+    f_customer_id: int = Field(
         default=None,
         index=True,
         nullable=False,
