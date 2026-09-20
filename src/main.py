@@ -35,7 +35,7 @@ class HawkerFlowCustomer:
         Initialise and configures the FastAPI application
         """
         self._app = FastAPI(
-            title="Data Ontology",
+            title="Hawkerflow Service Customer",
             docs_url=self._config.service.docs_url,
             redoc_url=self._config.service.redoc_url,
             root_path=self._config.service.root_path,
