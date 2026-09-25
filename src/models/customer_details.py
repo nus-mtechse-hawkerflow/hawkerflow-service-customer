@@ -5,4 +5,5 @@ class CustomerDetails(BaseModel):
     first_name: str
     last_name: str
     email: EmailStr
-    phone_number: int
+    phone_number: str
+    customer_sub: str

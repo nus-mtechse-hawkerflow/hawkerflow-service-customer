@@ -6,12 +6,12 @@ from sqlmodel import SQLModel, Field, Column, DateTime, text, Relationship
 class CustomerLoyalty(SQLModel, table=True):
     __tablename__ = "customer_loyalty"
 
-    f_customer_id: int = Field(
+    f_cust_sub: str = Field(
         default=None,
         index=True,
         nullable=False,
         primary_key=True,
-        foreign_key="customer.f_id"
+        foreign_key="customer.f_cust_sub"
     )
     f_loyalty_tier: str = Field(default="BRONZE")
     f_loyalty_points: int

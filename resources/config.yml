@@ -1,7 +1,7 @@
 service:
   title: HawkerFlow Service Customer
   root_path: '/hawkerflow'
-  port: 8080
+  port: 8081
   host: '127.0.0.1'
   allow_origins:
     - '*'
