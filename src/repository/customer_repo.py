@@ -75,8 +75,9 @@ class CustomerRepo:
                         "orders": [
                             {
                                 "order_id": order.f_order_id,
-                                "order_name": order.f_order_name,
-                                "order_quantity": order.f_order_quantity,
+                                "dish_id": order.f_dish_id,
+                                "dish_name": order.f_dish_name,
+                                "quantity": order.f_quantity,
                                 "order_price": order.f_order_price,
                                 "order_status": order.f_order_status
                             } for order in customer.customer_orders
