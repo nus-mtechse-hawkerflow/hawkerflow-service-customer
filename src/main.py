@@ -1,5 +1,6 @@
 from configurations.app_config import AppConfig
 from endpoints.customer_routes import cust_router
+from endpoints.health_routes import health_router
 
 import uvicorn
 from fastapi import FastAPI
@@ -57,6 +58,7 @@ class HawkerFlowCustomer:
 
     def _include_routers(self):
         self._app.include_router(cust_router)
+        self._app.include_router(health_router)
 
 
 if __name__ == "__main__":
