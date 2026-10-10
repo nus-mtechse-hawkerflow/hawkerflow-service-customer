@@ -1,0 +1,26 @@
+service:
+  title: HawkerFlow Service Customer
+  root_path: '/customer'
+  port: 8080
+  host: '0.0.0.0'
+  allow_origins:
+    - '*'
+  methods:
+    - '*'
+  headers:
+    - '*'
+  docs_url: '/docs'
+  redoc_url: '/redoc'
+  reload: true
+  scheme: 'http'
+  credentials: true
+
+datasource:
+  driver:
+    package: "drivers.postgres_driver"
+    driver_class: "PostgresDriver"
+  database:
+    connection_url: 'sqlite:///database.db'
+    driver_name: 'postgresql+psycopg2'
+  options:
+    echo: false

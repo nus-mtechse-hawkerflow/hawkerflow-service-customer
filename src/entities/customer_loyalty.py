@@ -1,0 +1,43 @@
+from datetime import datetime, timezone
+from typing import TYPE_CHECKING
+
+from sqlmodel import Column, DateTime, Field, Relationship, SQLModel, text
+
+if TYPE_CHECKING:
+    from .customer import Customer
+
+
+class CustomerLoyalty(SQLModel, table=True):
+    __tablename__ = "customer_loyalty"
+
+    f_cust_sub: str = Field(
+        default=None,
+        index=True,
+        nullable=False,
+        primary_key=True,
+        foreign_key="customer.f_cust_sub"
+    )
+    f_loyalty_tier: str = Field(default="BRONZE")
+    f_loyalty_points: int
+    f_created_at: datetime = Field(
+        default_factory=lambda: datetime.now(timezone.utc),
+        sa_column=Column(
+            DateTime(timezone=True),
+            server_default=text("CURRENT_TIMESTAMP"),
+            nullable=False
+        )
+    )
+    f_last_updated: datetime = Field(
+        default_factory=lambda: datetime.now(timezone.utc),
+        sa_column=Column(
+            DateTime(timezone=True),
+            server_default=text("CURRENT_TIMESTAMP"),
+            nullable=False
+        )
+    )
+    f_last_order_at: datetime | None = Field(
+        default=None,
+        sa_column=Column(DateTime(timezone=True), nullable=True),
+    )
+
+    customer: "Customer" = Relationship(back_populates="customer_loyalty")
