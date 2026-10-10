@@ -43,14 +43,17 @@ class CustomerRepo:
 
     def update_customer(self, customer_details: CustomerDetails):
         with Session(self._engine) as session:
-            customer = session.get(Customer, customer_details.email)
-            customer.f_first_name = customer_details.first_name
-            customer.f_last_name = customer_details.last_name
-            customer.f_phone_number = customer_details.phone_number
-            session.add(customer)
-            session.commit()
-            session.refresh(customer)
-            return customer
+            statement = select(Customer).where(Customer.f_email == customer_details.email)
+            customer = session.exec(statement).first()
+            if customer is not None:
+                customer.f_first_name = customer_details.first_name
+                customer.f_last_name = customer_details.last_name
+                customer.f_phone_number = customer_details.phone_number
+                session.add(customer)
+                session.commit()
+                session.refresh(customer)
+                return customer
+            return None
 
     def check_account_exist(self, customer_account: CustomerAccount) -> bool:
         with Session(self._engine) as session:
