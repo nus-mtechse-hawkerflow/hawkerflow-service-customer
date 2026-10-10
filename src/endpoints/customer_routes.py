@@ -3,8 +3,8 @@ from typing import Annotated
 from fastapi import APIRouter, Depends, Request
 from fastapi.responses import JSONResponse
 
-from models.customer_details import CustomerDetails
 from models.customer_account import CustomerAccount
+from models.customer_details import CustomerDetails
 from models.customer_order_details import CustomerOrderDetails
 from user_service.user_service import UserService
 
@@ -18,7 +18,7 @@ def get_user_service(request: Request):
 @cust_router.post("/register")
 async def register_user(
         customer_details: CustomerDetails,
-        user_service: Annotated[UserService, None] = Depends(get_user_service)
+        user_service: Annotated[UserService, Depends(get_user_service)]
 ):
 
     customer = user_service.register_customer(customer_details)
@@ -34,7 +34,7 @@ async def register_user(
 @cust_router.post('/check_account_exist')
 async def check_account_exist(
         customer_account: CustomerAccount,
-        user_service: Annotated[UserService, None] = Depends(get_user_service)
+        user_service: Annotated[UserService, Depends(get_user_service)]
 ):
     return JSONResponse(
         status_code=200,
@@ -46,7 +46,7 @@ async def check_account_exist(
 @cust_router.get('/user/{cust_sub}')
 async def get_user_details(
         cust_sub: str,
-        user_service: Annotated[UserService, None] = Depends(get_user_service)
+        user_service: Annotated[UserService, Depends(get_user_service)]
 ):
     customer = user_service.get_customer_details(cust_sub)
     return JSONResponse(
@@ -58,9 +58,9 @@ async def get_user_details(
 @cust_router.post('/user/update_order')
 async def update_order(
         order_details: CustomerOrderDetails,
-        user_service: Annotated[UserService, None] = Depends(get_user_service)
+        user_service: Annotated[UserService, Depends(get_user_service)]
 ):
-    cust = user_service.update_cust_order(order_details)
+    user_service.update_cust_order(order_details)
     return JSONResponse(
         status_code=200,
         content={

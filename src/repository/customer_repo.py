@@ -1,10 +1,10 @@
 from datetime import datetime, timezone
 
-from sqlmodel import Session, select
 from sqlalchemy import Engine
+from sqlmodel import Session, select
 
-from entities.customer_loyalty import CustomerLoyalty
 from entities.customer import Customer
+from entities.customer_loyalty import CustomerLoyalty
 from models.customer_account import CustomerAccount
 from models.customer_details import CustomerDetails
 

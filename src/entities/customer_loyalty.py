@@ -1,6 +1,10 @@
 from datetime import datetime, timezone
+from typing import TYPE_CHECKING
 
-from sqlmodel import SQLModel, Field, Column, DateTime, text, Relationship
+from sqlmodel import Column, DateTime, Field, Relationship, SQLModel, text
+
+if TYPE_CHECKING:
+    from .customer import Customer
 
 
 class CustomerLoyalty(SQLModel, table=True):

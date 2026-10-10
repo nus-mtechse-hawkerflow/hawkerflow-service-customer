@@ -1,12 +1,11 @@
-from configurations.app_config import AppConfig
-from endpoints.customer_routes import cust_router
-from endpoints.health_routes import health_router
-
 import uvicorn
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.middleware.trustedhost import TrustedHostMiddleware
 
+from configurations.app_config import AppConfig
+from endpoints.customer_routes import cust_router
+from endpoints.health_routes import health_router
 from lifecycle.lifespan import startup
 
 

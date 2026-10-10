@@ -1,7 +1,12 @@
 from datetime import datetime, timezone
+from typing import TYPE_CHECKING
 
 from pydantic import EmailStr
-from sqlmodel import SQLModel, Field, Relationship
+from sqlmodel import Field, Relationship, SQLModel
+
+if TYPE_CHECKING:
+    from .customer_loyalty import CustomerLoyalty
+    from .customer_orders import CustomerOrders
 
 
 class Customer(SQLModel, table=True):

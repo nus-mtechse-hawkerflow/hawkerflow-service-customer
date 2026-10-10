@@ -1,9 +1,9 @@
+from entities.customer import Customer
 from models.customer_account import CustomerAccount
 from models.customer_details import CustomerDetails
 from models.customer_order_details import CustomerOrderDetails
 from repository.customer_orders_repo import CustomerOrdersRepo
 from repository.customer_repo import CustomerRepo
-from entities.customer import Customer
 
 
 class UserService:

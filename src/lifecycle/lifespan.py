@@ -1,15 +1,13 @@
+import os
 from contextlib import asynccontextmanager
 from pathlib import Path
-import os
 
 from fastapi import FastAPI
 from sqlmodel import SQLModel
 
 from configurations.app_config import AppConfig
-from entities.customer import Customer
-from entities.customer_loyalty import CustomerLoyalty
-from repository.customer_repo import CustomerRepo
 from repository.customer_orders_repo import CustomerOrdersRepo
+from repository.customer_repo import CustomerRepo
 from session.db_session import DBSession
 from user_service.user_service import UserService
 
